@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mirusoft.business.mapper.CustomerMapper">
+    <resultMap type="com.mirusoft.business.model.Customer" id="result">
+        <result property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="age" column="age" />
+    </resultMap>
+
+    <select id="findAll" resultMap="result">
+        SELECT * FROM customer
+    </select>
+
+    <select id="findById" resultType="com.mirusoft.business.model.Customer">
+        SELECT * FROM customer WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.mirusoft.business.model.Customer" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO customer (name, age) VALUES(#{name}, #{age})
+    </insert>
+
+    <update id="update" parameterType="com.mirusoft.business.model.Customer" >
+        UPDATE customer SET name = #{name}, age = #{age} WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM customer WHERE id = #{id}
+    </delete>
+
+</mapper>

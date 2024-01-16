@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active:
+      on-profilez: '@spring.profiles.active@'
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
